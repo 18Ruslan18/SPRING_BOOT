@@ -19,12 +19,15 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "firstname")
     private String firstName;
-    @Column(name = "lastname")
     private String lastName;
 
+    private String login;
+    private String hashPassword;
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
+    @Enumerated(value = EnumType.STRING)
+    private State state;
     //@OneToMany(mappedBy = "owner")
     ///private List<Car> cars;
     public static User from(UserForm form) {
