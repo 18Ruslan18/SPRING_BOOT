@@ -1,11 +1,14 @@
-package com.company;
+package com.company.app;
 
-import javafx.application.Application;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 @SpringBootApplication
-public class app {
+@ComponentScan(basePackages = "com.company")
+public class Application {
     public static void main(String[] args){
         SpringApplication.run(Application.class);
     }
