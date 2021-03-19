@@ -25,11 +25,8 @@ public class User {
     @Column(name = "lastname")
     private String lastName;
 
-    @OneToMany(mappedBy = "owner")
-    private List<Car> cars;
-
-
-
+    //@OneToMany(mappedBy = "owner")
+    ///private List<Car> cars;
     public static User from(UserForm form) {
         return User.builder()
                 .firstName(form.getFirstName())

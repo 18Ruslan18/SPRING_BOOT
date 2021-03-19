@@ -1,6 +1,8 @@
 <html>
 <head>
     <title>Title</title>
+    <style><#include "static/css/css/styles.css"></style>
+
     <link href="static/css/css/styles.css" rel="stylesheet" type="text/css">
 </head>
 
