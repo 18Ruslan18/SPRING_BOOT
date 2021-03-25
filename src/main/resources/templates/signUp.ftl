@@ -42,6 +42,15 @@
     </style>
 </head>
 <body>
+<#if error??>
+    <div class="alert alert-danger" role="alert">Пользователь с таким логином уже есть</div>
+</#if>
+<#if error1??>
+    <div class="alert alert-danger" role="alert">Введенные пароли не совпадают</div>
+</#if>
+<#if error2??>
+    <div class="alert alert-danger" role="alert">Заполнены не все поля</div>
+</#if>
 <center>
 
 <div class="form-style-2">
@@ -53,7 +62,7 @@
         <ul class="wrapper">
             <li class="form-row">
         <label for="login">Логин (email)</label>
-            <input class="input-field" type="text" id="login" name="login">
+            <input class="input-field" type="text" id="login" name="login" >
             </li>
 
             <li class="form-row">
