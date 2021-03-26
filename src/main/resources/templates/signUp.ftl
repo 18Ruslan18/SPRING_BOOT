@@ -62,32 +62,30 @@
         <ul class="wrapper">
             <li class="form-row">
         <label for="login">Логин (email)</label>
-            <input class="input-field" type="text" id="login" name="login" >
+            <input class="input-field" type="text" id="login" name="login" placeholder="Введите вашу почту">
             </li>
 
             <li class="form-row">
         <label for="password">Пароль</label>
-            <input class="input-field" type="password" id="password" name="password">
+            <input class="input-field" type="password" id="password" name="password" placeholder="Придумайте пароль">
 
             </li>
 
             <li class="form-row">
         <label for="passwordCheck">Повторите пароль</label>
-            <input class="input-field" type="password" id="passwordCheck" name="passwordCheck">
+            <input class="input-field" type="password" id="passwordCheck" name="passwordCheck" placeholder="Повторите введенный пароль">
 
             </li>
 
             <li class="form-row">
         <label for="first-name">Имя</label>
-            <input class="input-field"  id="first-name" name="firstName">
+            <input class="input-field"  id="first-name" name="firstName" placeholder="Введите ваше имя">
             </li>
             <li class="form-row">
         <label for="last-name">Фамилия</label>
-            <input class="input-field"  id="last-name" name="lastName">
+            <input class="input-field"  id="last-name" name="lastName" placeholder="Введите вашу фамилию">
             </li>
         </ul>
-        <label for="remember-me">
-            <input type="checkbox" id="remember-me" name="remember-me">Запомнить меня</label>
         <input type="submit"     value="   Зарегистрироваться   ">
         <br>
         <br>
