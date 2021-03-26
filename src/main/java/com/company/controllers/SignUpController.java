@@ -32,7 +32,7 @@ public class SignUpController {
         Optional<User> user = usersRepository.findOneByLogin(login);
         if (user.isPresent()) { model.addAttribute("error", true);  return "signUp"; }
         if (!password.equals(passwordCheck)) { model.addAttribute("error1", true);  return "signUp"; }
-        //if (login == null || firstName == null || lastName == null) { model.addAttribute("error2", true);  return "signUp"; }
+        if (login.equals("") || firstName.equals("") || lastName.equals("") || password.equals("")) { model.addAttribute("error2", true);  return "signUp"; }
         service.signUp(userForm);
         return "redirect:/login";
     }
