@@ -43,16 +43,28 @@
 </head>
 <body>
 <center>
-<div class="form-style-2">
-    <div class="header-h1 header-h1-dark">
-        <h1>${user.firstName} ${user.lastName}</h1>
+    <div class="form-style-2">
+        <div class="header-h1 header-h1-dark">
+            <h1>Список друзей</h1>
+        </div>
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            <#list listFriends as userf>
+                <tr>
+                    <td>${userf.firstName}</td>
+                    <td>${userf.lastName}</td>
+                </tr>
+            </#list>
+        </table>
+        <a href="/logout">Выход</a>
+        <button>
+            <img src="image/logout.png"  alt="" style="vertical-align:middle">
+            <a href="/logout"></a>
+        </button>
     </div>
-<a href="/logout">Выход</a>
-    <button>
-        <img src="image/logout.png"  alt="" style="vertical-align:middle">
-        <a href="/logout"></a>
-    </button>
-</div>
 </center>
 </body>
 </html>

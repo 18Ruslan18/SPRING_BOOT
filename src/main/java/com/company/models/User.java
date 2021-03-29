@@ -22,6 +22,7 @@ public class User {
     private String firstName;
     private String lastName;
 
+
     private String login;
     private String hashPassword;
     @Enumerated(value = EnumType.STRING)
@@ -30,6 +31,12 @@ public class User {
     private State state;
     //@OneToMany(mappedBy = "owner")
     ///private List<Car> cars;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<User> friends;
+
+    public void addFriend(User user){
+        this.friends.add(user);
+    }
     public static User from(UserForm form) {
         return User.builder()
                 .firstName(form.getFirstName())
