@@ -1,11 +1,16 @@
 package com.company.controllers;
 
 import com.company.forms.UserForm;
+import com.company.models.Role;
+import com.company.models.State;
 import com.company.models.User;
 import com.company.repositories.UsersRepository;
 import com.company.security.details.UserDetailsImpl;
 import com.company.services.SignUpService;
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @Controller
 public class SignUpController {
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @Autowired
     private SignUpService service;
     @Autowired
