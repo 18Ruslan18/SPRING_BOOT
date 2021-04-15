@@ -4,6 +4,7 @@
     <style><#include "static/css/css/bootstrap.min.css"></style>
     <style><#include "static/css/css/headind.css"></style>
     <style><#include "static/css/css/button.css"></style>
+    <style><#include "static/css/css/title1.css"></style>
     <style>
         .wrapper {
             background-color: whitesmoke;
@@ -56,6 +57,17 @@
                     </form>
 
         </div>
+        <#if flag??>
+            <form method="post" action="/findFriends">
+            <div class="six">
+
+                    <h1>${user.login} ${user.firstName} ${user.lastName}</h1>
+
+            </div>
+
+                <button type = "submit" class="glow-button">Добавить</button>
+            </form>
+        </#if>
         <a href="/logout">Выход</a>
         <button>
             <img src="image/logout.png"  alt="" style="vertical-align:middle">
