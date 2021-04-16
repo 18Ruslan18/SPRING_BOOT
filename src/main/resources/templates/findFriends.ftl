@@ -61,7 +61,7 @@
             <form method="post" action="/findFriends">
             <div class="six">
 
-                    <h1>${user.login} ${user.firstName} ${user.lastName}</h1>
+                    <h1 >${user.login} ${user.firstName} ${user.lastName}</h1>
 
             </div>
 

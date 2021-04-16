@@ -11,8 +11,12 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Map;
 import java.util.Optional;
 
 import static com.company.transfer.UserDto.from;
@@ -20,13 +24,14 @@ import static com.company.transfer.UserDto.from;
 public class FindFriendsController {
     @Autowired
     private UsersRepository usersRepository;
+    private Optional<User> user;
     @GetMapping("/findFriends")
     public String getProfilePage(@RequestParam(required = false, defaultValue = "") String filter, ModelMap model, @AuthenticationPrincipal Authentication authentication) {
         if (authentication == null) {
             return "redirect:/login";
         }
         if (filter !=null && !filter.isEmpty()){
-            Optional<User> user = usersRepository.findOneByLogin(filter);
+            user = usersRepository.findOneByLogin(filter);
             if (!user.isPresent()) { model.addAttribute("error", true);  return "findFriends"; }
             else {
                 model.addAttribute("flag", true);
@@ -37,6 +42,17 @@ public class FindFriendsController {
 
         return "findFriends";
 
+    }
+    @PostMapping("/findFriends")
+    public String add(@RequestParam(required = false, defaultValue = "") String filter, @AuthenticationPrincipal Authentication authentication){
+
+
+            UserDetailsImpl details =  (UserDetailsImpl) authentication.getPrincipal();
+            User currentUser= details.getUser();
+            currentUser.addFriend(user.get());
+            usersRepository.save(currentUser);
+
+        return "findFriends";
     }
 }
 
