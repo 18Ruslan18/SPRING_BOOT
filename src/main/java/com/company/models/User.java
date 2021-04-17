@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -16,6 +17,10 @@ import java.util.List;
 @Entity
 @Table(name = "fix_user")
 public class User {
+    @Override
+    public int hashCode() {
+        return Long.valueOf(getId()).hashCode();
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,9 +36,8 @@ public class User {
     private State state;
     //@OneToMany(mappedBy = "owner")
     ///private List<Car> cars;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<User> friends;
-
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<User> friends;
     public void addFriend(User user){
         this.friends.add(user);
     }

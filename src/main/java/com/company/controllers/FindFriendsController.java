@@ -24,18 +24,19 @@ import static com.company.transfer.UserDto.from;
 public class FindFriendsController {
     @Autowired
     private UsersRepository usersRepository;
-    private Optional<User> user;
+    private String loginFriend;
     @GetMapping("/findFriends")
     public String getProfilePage(@RequestParam(required = false, defaultValue = "") String filter, ModelMap model, @AuthenticationPrincipal Authentication authentication) {
         if (authentication == null) {
             return "redirect:/login";
         }
         if (filter !=null && !filter.isEmpty()){
-            user = usersRepository.findOneByLogin(filter);
+            Optional<User> user = usersRepository.findOneByLogin(filter);
             if (!user.isPresent()) { model.addAttribute("error", true);  return "findFriends"; }
             else {
                 model.addAttribute("flag", true);
                 model.addAttribute("user", user.get());
+                loginFriend = user.get().getLogin();
             }
         }
 
@@ -49,7 +50,8 @@ public class FindFriendsController {
 
             UserDetailsImpl details =  (UserDetailsImpl) authentication.getPrincipal();
             User currentUser= details.getUser();
-            currentUser.addFriend(user.get());
+            ///currentUser.addFriend(usersRepository.findOneByLogin(loginFriend).get());
+             currentUser.addFriend(usersRepository.findOneByLogin("user").get());
             usersRepository.save(currentUser);
 
         return "findFriends";
