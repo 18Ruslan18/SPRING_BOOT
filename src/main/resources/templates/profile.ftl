@@ -47,6 +47,54 @@
     <div class="header-h1 header-h1-dark">
         <h1>${user.firstName} ${user.lastName}</h1>
     </div>
+    <br>
+    <div class="header-h1 header-h1-dark">
+        <h1>Список друзей</h1>
+    </div>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        <#list listFriends as userf>
+            <tr>
+                <td>${userf.firstName}</td>
+                <td>${userf.lastName}</td>
+            </tr>
+        </#list>
+    </table>
+    <br>
+    <div class="header-h1 header-h1-dark">
+        <h1>Список подписок</h1>
+    </div>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        <#list listFollowing as userf>
+            <tr>
+                <td>${userf.firstName}</td>
+                <td>${userf.lastName}</td>
+            </tr>
+        </#list>
+    </table>
+    <br>
+    <div class="header-h1 header-h1-dark">
+        <h1>Список подписчиков</h1>
+    </div>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        <#list listFollowers as userf>
+            <tr>
+                <td>${userf.firstName}</td>
+                <td>${userf.lastName}</td>
+            </tr>
+        </#list>
+    </table>
 <a href="/logout">Выход</a>
     <button>
         <img src="image/logout.png"  alt="" style="vertical-align:middle">

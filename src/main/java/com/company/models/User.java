@@ -21,6 +21,15 @@ public class User {
     public int hashCode() {
         return Long.valueOf(getId()).hashCode();
     }
+    @Override
+    public boolean equals(Object o){
+        if (this==o){
+            return true;
+        }
+        if (o==null || getClass()!=o.getClass() ) {return false;}
+        User that = (User) o;
+        return this.getId()==that.getId();
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -38,6 +47,37 @@ public class User {
     ///private List<Car> cars;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<User> friends;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<User> followers;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<User> following;
+
+    public Set<User> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(Set<User> friends) {
+        this.friends = friends;
+    }
+
+    public Set<User> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(Set<User> followers) {
+        this.followers = followers;
+    }
+
+    public Set<User> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(Set<User> following) {
+        this.following = following;
+    }
+
+    public void addFollowers(User user){this.followers.add(user);}
+    public void addFollowing(User user){this.following.add(user);}
     public void addFriend(User user){
         this.friends.add(user);
     }

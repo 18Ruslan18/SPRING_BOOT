@@ -50,10 +50,18 @@ public class FindFriendsController {
 
             UserDetailsImpl details =  (UserDetailsImpl) authentication.getPrincipal();
             User currentUser= details.getUser();
-            ///currentUser.addFriend(usersRepository.findOneByLogin(loginFriend).get());
-             currentUser.addFriend(usersRepository.findOneByLogin("user").get());
+            User findUser = usersRepository.findOneByLogin(loginFriend).get();
+            if (currentUser.getFollowers().contains(findUser)) {
+                currentUser.addFriend(findUser); findUser.addFriend(currentUser);
+                currentUser.getFollowers().remove(findUser); findUser.getFollowing().remove(currentUser);
+            }
+            else {
+                currentUser.addFollowing(findUser); findUser.addFollowers(currentUser);
+            }
+            //currentUser.addFriend(usersRepository.findOneByLogin(loginFriend).get());
+             //currentUser.addFriend(usersRepository.findOneByLogin("user").get());
             usersRepository.save(currentUser);
-
+            usersRepository.save(findUser);
         return "findFriends";
     }
 }
