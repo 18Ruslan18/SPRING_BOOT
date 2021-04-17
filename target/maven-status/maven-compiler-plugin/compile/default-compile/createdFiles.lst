@@ -1,0 +1,9 @@
+com\company\repositories\UsersRepository.class
+com\company\forms\UserForm.class
+com\company\models\Car$CarBuilder.class
+com\company\app\Application.class
+com\company\models\User$UserBuilder.class
+com\company\controllers\UsersController.class
+com\company\repositories\CarsRepository.class
+com\company\models\Car.class
+com\company\models\User.class
